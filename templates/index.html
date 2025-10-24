@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/" class="nav-link active">Prediction</a>
+    </nav>
+
+    <div class="container">
+        <h1>Heart Disease Prediction</h1>
+        <p class="subtitle">Enter patient details or auto-fill with a random sample</p>
+
+        <form action="/predict" method="post" class="prediction-form" id="predictionForm">
+
+            <div class="form-group"><label>Age</label><input type="number" name="age" required></div>
+
+            <div class="form-group">
+                <label>Sex</label>
+                <select name="sex" required>
+                    <option value="0">Female</option>
+                    <option value="1">Male</option>
+                </select>
+            </div>
+
+            <div class="form-group"><label>Chest Pain Type (cp)</label><input type="number" name="cp" min="0" max="3" required></div>
+
+            <div class="form-group"><label>Resting BP (trestbps)</label><input type="number" name="trestbps" required></div>
+
+            <div class="form-group"><label>Cholesterol (chol)</label><input type="number" name="chol" required></div>
+
+            <div class="form-group">
+                <label>Fasting Blood Sugar >120 mg/dl (fbs)</label>
+                <select name="fbs" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group"><label>Resting ECG (restecg)</label><input type="number" name="restecg" min="0" max="2" required></div>
+
+            <div class="form-group"><label>Max Heart Rate (thalach)</label><input type="number" name="thalach" required></div>
+
+            <div class="form-group">
+                <label>Exercise Induced Angina (exang)</label>
+                <select name="exang" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group"><label>ST Depression (oldpeak)</label><input type="number" step="any" name="oldpeak" required></div>
+
+            <div class="form-group"><label>Slope</label><input type="number" name="slope" min="0" max="2" required></div>
+
+            <div class="form-group"><label>Number of Major Vessels (ca)</label><input type="number" name="ca" min="0" max="4" required></div>
+
+            <div class="form-group"><label>Thalassemia (thal)</label><input type="number" name="thal" min="0" max="3" required></div>
+
+            <div class="button-group">
+                <button type="button" class="sample-btn" onclick="fillSampleData()">Fill with Sample Data</button>
+                <button type="submit" class="predict-btn">Predict</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Predefined 5 patient samples (3 with heart disease, 2 without)
+        const samples = [
+            {age: 63, sex: 1, cp: 3, trestbps: 145, chol: 233, fbs: 1, restecg: 0, thalach: 150, exang: 0, oldpeak: 2.3, slope: 0, ca: 0, thal: 1},
+            {age: 37, sex: 1, cp: 2, trestbps: 130, chol: 250, fbs: 0, restecg: 1, thalach: 187, exang: 0, oldpeak: 3.5, slope: 0, ca: 0, thal: 2},
+            {age: 41, sex: 0, cp: 1, trestbps: 130, chol: 204, fbs: 0, restecg: 0, thalach: 172, exang: 0, oldpeak: 1.4, slope: 2, ca: 0, thal: 2},
+            {age: 56, sex: 1, cp: 1, trestbps: 120, chol: 236, fbs: 0, restecg: 1, thalach: 178, exang: 0, oldpeak: 0.8, slope: 2, ca: 0, thal: 2},
+            {age: 57, sex: 0, cp: 0, trestbps: 120, chol: 354, fbs: 0, restecg: 1, thalach: 163, exang: 1, oldpeak: 0.6, slope: 2, ca: 0, thal: 2}
+        ];
+
+        function fillSampleData() {
+            const random = samples[Math.floor(Math.random() * samples.length)];
+            const form = document.getElementById('predictionForm');
+            for (const [key, value] of Object.entries(random)) {
+                const field = form.querySelector(`[name="${key}"]`);
+                if (field) field.value = value;
+            }
+        }
+    </script>
+</body>
+</html>

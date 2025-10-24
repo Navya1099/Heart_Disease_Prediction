@@ -1,0 +1,123 @@
+body {
+    background-color: #f6f9fc;
+    font-family: "Poppins", "Segoe UI", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.nav-link {
+    color: #333;
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.nav-link.active {
+    color: #ff2d55;
+    border-bottom: 2px solid #ff2d55;
+}
+
+.container {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    padding: 40px 50px;
+    width: 480px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #6b6b6b;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+.prediction-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    text-align: left;
+}
+
+label {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+input:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.predict-btn, .sample-btn, .back-btn {
+    background: linear-gradient(90deg, #ff5a5f, #ff2d55);
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.predict-btn:hover, .sample-btn:hover, .back-btn:hover {
+    background: linear-gradient(90deg, #ff2d55, #ff5a5f);
+}
+
+.result-card {
+    margin: 25px auto;
+    padding: 25px;
+    border-radius: 12px;
+    font-size: 18px;
+    width: 80%;
+}
+
+.result-card.positive {
+    background-color: #e7f8ef;
+    color: #0b8a3c;
+}
+
+.result-card.negative {
+    background-color: #ffecec;
+    color: #d62828;
+}
